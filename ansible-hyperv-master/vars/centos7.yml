@@ -1,0 +1,26 @@
+vms:
+  - type: web
+    name: "webtest-{{env}}"
+
+    cpu: 1   
+    memory: 2048MB
+
+    network:
+      ip: 192.168.0.232
+      netmask: 255.255.255.0
+      gateway: 192.168.0.1
+      dns: 192.168.0.212
+      
+    network_switch: 'External Virtual Switch' 
+
+    src_vhd: "C:\\win2012r2-iis-gold.vhdx"
+    dest_vhd: "C:\\Users\\Public\\Documents\\Hyper-V\\Virtual hard disks\\web-{{env}}.vhdx"
+    diskspace: '40GB'
+
+    iso_download_url: 'http://repos.mia.quadranet.com/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso'
+    disk_directory: 'C:\Users\Public\Documents\{{directory_name}}\vm'
+    boot_device: CD
+    working_directory: 'C:\Users\Public\Documents\{{directory_name}}'
+    iso_directory: 'C:\Users\Public\Documents\{{directory_name}}\iso'
+    iso_file_path: 'C:\Users\Public\Documents\{{directory_name}}\iso\CentOS-7-x86_64-Minimal-1908.iso'
+    

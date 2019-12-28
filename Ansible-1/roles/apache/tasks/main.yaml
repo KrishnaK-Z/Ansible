@@ -1,0 +1,24 @@
+---
+- name: Install Apache2
+  yum:
+    name: apache2
+    state: latest
+
+- name: Apache2 Start initial
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+
+- name: enabled mod_rewrite
+  apache2_module: 
+    name: rewrite 
+    state: present
+  notify: 
+    - Restart Apache2
+
+# - name: Add user "web_user"
+#     user: name="{{ web_user }}" groups=apache append=yes home=/var/www/html/
+
+# - name: Change ownership of folder to user created and group apache
+#   file: path=/var/www/ owner="{{ web_user }}" group=apache state=directory recurse=yes

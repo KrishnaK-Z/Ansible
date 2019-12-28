@@ -1,0 +1,5 @@
+---
+- name: Run yum update first
+  yum: 
+    name: '*' 
+    state: latest

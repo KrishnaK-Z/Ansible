@@ -1,0 +1,11 @@
+defaut_generation: 1
+
+# ansible_user: krishna
+# ansible_password: zilker777. 
+# ansible_port: 5986
+# ansible_connection: winrm
+# ansible_winrm_server_cert_validation: ignore
+
+env: centos7 # Default vm env
+ 
+directory_name: Centos_VM

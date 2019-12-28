@@ -1,0 +1,69 @@
+---
+- name: Check Directory Exsistence
+  include_vars:
+    file: "{{env}}.yml"
+
+- name: Check whether Working Directory exists
+  win_stat:
+    path: "{{item.working_directory}}"
+    get_checksum: false
+    get_md5: false
+  with_items: "{{ vms }}"
+  register: file_info
+
+#    - debug: var=file_info.results
+
+- name: Create a Working Directory
+  win_file:
+    path: '{{item.item.working_directory}}'
+    state: directory
+  with_items: "{{ file_info.results }}"
+  when: item.stat.exists == false
+
+- name: Check whether iso Directory exists
+  win_stat:
+    path: "{{item.iso_directory}}"
+    get_checksum: false
+    get_md5: false
+  with_items: "{{ vms }}"
+  register: iso_dir_info
+
+- name: Create a directory to save iso
+  win_file:
+    path: '{{item.item.iso_directory}}'
+    state: directory
+  with_items: "{{ iso_dir_info.results }}"
+  when: item.stat.exists == false
+
+- name: Check whether iso file exists
+  win_stat:
+    path: "{{item.iso_file_path}}"
+    get_checksum: false
+    get_md5: false
+  with_items: "{{ vms }}"
+  register: iso_file_info
+
+#    - debug: var=iso_file_info.results
+
+- name: Downloads iso file
+  win_get_url:
+    url: "{{item.item.iso_download_url}}"
+    dest: "{{item.item.iso_directory}}"
+  with_items: "{{ iso_file_info.results }}"
+  when: item.stat.exists == false
+  register: iso_file
+
+- name: Check whether VM Directory exists
+  win_stat:
+    path: "{{item.disk_directory}}"
+    get_checksum: false
+    get_md5: false
+  with_items: "{{ vms }}"
+  register: disk_dir_info
+
+- name: Create a VM Directory
+  win_file:
+    path: '{{item.item.disk_directory}}'
+    state: directory
+  with_items: "{{ disk_dir_info.results }}"
+  when: item.stat.exists == false

@@ -1,0 +1,6 @@
+[virtualbox]
+192.168.100.200
+
+[virtualbox:vars]
+ansible_sudo_pass=Santhosh
+

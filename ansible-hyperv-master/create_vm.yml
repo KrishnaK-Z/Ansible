@@ -1,0 +1,13 @@
+---
+- name: Provision VM
+  hosts: home
+#   gather_facts: no
+
+  roles:
+    # - openssh
+  tasks:
+    # - name: Check for Directory
+    #   import_tasks: tasks/check_dir.yml
+
+    - name: Provisioning VM
+      import_tasks: tasks/prov_vm.yml 

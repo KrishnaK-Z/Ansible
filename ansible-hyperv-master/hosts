@@ -1,0 +1,25 @@
+[web]
+192.168.93.131
+
+[web:vars]
+ansible_user='krishna'
+ansible_password='zilker777'
+#ansible_port=5985
+ansible_port=5986
+ansible_connection=winrm
+#ansible_winrm_scheme=http
+ansible_winrm_scheme=https
+ansible_winrm_server_cert_validation=ignore
+
+[home]
+192.168.1.3
+
+[home:vars]
+ansible_user='MOULY AKASH'
+ansible_password='RockandRoll123'
+#ansible_port=5985
+ansible_port=5986
+ansible_connection=winrm
+#ansible_winrm_scheme=http
+ansible_winrm_scheme=https
+ansible_winrm_server_cert_validation=ignore

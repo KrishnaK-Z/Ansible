@@ -1,0 +1,13 @@
+---    
+# sFTP user
+web_user: ansible
+
+# These are the Magento database settings
+magento_db_host: 127.0.0.1
+magento_db_name: magento
+magento_db_user: magento
+magento_db_password: magento
+mysql_root_password: root
+# Requirements: https://devdocs.magento.com/guides/v2.2/install-gde/system-requirements-tech.html
+# Don't add dots. If 7.2 use 72.
+php_version: 7.2

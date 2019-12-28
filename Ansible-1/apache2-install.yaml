@@ -1,0 +1,12 @@
+---
+- name: Install Magento 2
+  hosts: virtualbox
+  become: true
+  user: santhosh
+
+  roles:
+    # - common
+    - apache
+    # - php
+    # - composer
+    # - mysql
